@@ -12,7 +12,7 @@ public class Rational{
     public Rational(int p, int q){
 	numerator = p;
 	if (q == 0){
-	    System.out.println("you git, you can divide by 0!");//I thought this was very clever, because mr brown told us git is british for idiot
+	    System.out.println("you git, you can't divide by 0!");//I thought this was very clever, because mr brown told us git is british for idiot
 	    numerator = 0;
 	    denominator=1;
 	}else {
