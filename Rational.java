@@ -21,7 +21,7 @@ public class Rational{
     }
     //Print out the number as a string. 
     public String toString(){
-	return "" + (1.0 * numerator/denominator);}
+	return "" + ((double)(1.0 * numerator/denominator));}
     //Convert the int/int into a single double
     public double floatValue(){
 	return (((double) numerator)/denominator);}
