@@ -44,13 +44,14 @@ public class Rational{
         this.denominator *= r.denominator;
     }
     //gcd - reused old code, uses Euclid's algorithm
-    public static int gcd(Rational r){
+    public  int gcd(Rational r){
         // switch inputs if b > a, because a must be >= b
         int a = r.numerator;
 	int b = r.denominator;
 
 	if (b > a){
-            return gcd(b, a);
+	    Rational x = new Rational(b,a);
+            return gcd(x);
         } else {
             while((a % b) != 0){
                 int holder = a; // hold the value of a before it is replaced with b
@@ -61,10 +62,68 @@ public class Rational{
 	}
     }
     //reduce - uses gcd to reduce fraction
-    public static void reduce(Rational r){
-	int gcd = gcd(Rational r);
-	r.denominator /= gcd;
-	r.numerator /= gcd;
+    public void reduce(){
+	int gcd = gcd(this);
+	this.denominator /= gcd;
+	this.numerator /= gcd;
+    }
+    //copied form previos gcd
+    public static int gcd( int a, int b){
+	//positve and negative numbers are divisible by the same numbers, but for this purpose, lets just use negative
+	int mini = Math.abs(Math.min(a,b));//Math methods choose the largest/smallest
+	int maxi = Math.abs(Math.max(a,b));
+	if (mini == 0 || maxi == 0){/*if its 0 then 0 is divisible by anything
+	    , so the biggest number is the answer. if they are both 0 then the
+	    answer has to be 0 */
+	    return maxi;
+	}
+	if (maxi % mini == 0) {
+	    return mini;
+	}else {
+	    int newA= mini;//you take the smallest as the new a
+	    int newB= maxi%mini;//and the remainder as the new b
+	    return gcd(newA, newB);
+	}
+    }
+
+	public int compareTo(Rational r){
+
+	    if (this.equals(r)){
+		return 0;
+	    }else if ((double)(this.floatValue()) > (double)(r.floatValue())){
+		return 1;
+	    }else{
+		return -1;
+	    }
+	}
+
+    public static void main(String[] args){
+	Rational a = new Rational(1,2);
+	Rational b = new Rational(1,4);
+	Rational c = new Rational(2,3);
+	Rational d = new Rational(4,6);
+	
+	System.out.println("a= " + a);
+	System.out.println("b= " + b);
+	System.out.println("c= " + c);
+	System.out.println(a.floatValue() + " expecting 0.5");
+	a.multiply(c);
+	System.out.println(a + " expecting 0.33333");
+	a = new Rational(1,2);
+	a.divide(c);
+	System.out.println(a + " expecting 0.75");
+	a = new Rational(1,2);
+	a.add(c);
+	System.out.println(a + " expecting 1.1666");
+        a = new Rational(1,2);
+	a.subtract(c);
+	System.out.println(a + " expecting -0.1666");
+	a = new Rational(1,2);
+	System.out.println(a.gcd(b) + " expecting 1");
+	a = new Rational(1,2);
+	d.reduce();
+	System.out.println(d +" expecting .66666");
+	System.out.println(a.compareTo(b) + " expecting 1");
     }
 
 }// end Rational
