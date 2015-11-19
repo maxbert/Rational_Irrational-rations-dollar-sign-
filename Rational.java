@@ -1,5 +1,5 @@
 //hw #32 Rational
-//max Bertifeld & Mathew So team Irrational-rations(dollar-sign)
+//max Bertifeld & Sebastian Dittgen team Irrational-rations(dollar-sign)
 //APCS pd 10
 //11/17/15
 public class Rational{
