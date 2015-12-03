@@ -2,7 +2,7 @@
 //max Bertifeld & Sebastian Dittgen team Irrational-rations(dollar-sign)
 //APCS pd 10
 //11/17/15
-public class Rational{
+public class Rational implements Comparable{
     private int numerator;
     private int denominator;
     public Rational(){
