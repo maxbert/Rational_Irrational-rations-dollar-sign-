@@ -87,8 +87,8 @@ public class Rational implements Comparable{
     }
 
     public int compareTo(Object o){
-	if(o instanceof Rational){
-	    Rational n = (Rational)o;
+	if(o instanceof Rational){//Check if user entered a rational, allow it
+	    Rational n = (Rational)o;//MAke sure to typecast
 	    if (this.equals(n)){
 		return 0;
 	    }else if ((double)(this.floatValue()) > (double)(n.floatValue())){
