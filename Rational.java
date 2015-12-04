@@ -86,16 +86,22 @@ public class Rational implements Comparable{
 	}
     }
 
-	public int compareTo(Rational r){
-
-	    if (this.equals(r)){
+    public int compareTo(Object o){
+	if(o instanceof Rational){
+	    Rational n = (Rational)o;
+	    if (this.equals(n)){
 		return 0;
-	    }else if ((double)(this.floatValue()) > (double)(r.floatValue())){
+	    }else if ((double)(this.floatValue()) > (double)(n.floatValue())){
 		return 1;
 	    }else{
 		return -1;
 	    }
 	}
+	else {
+	    System.out.println ("tisn't a rational");	    
+	    return 2;
+	}
+    }
 
     public static void main(String[] args){
 	Rational a = new Rational(1,2);
